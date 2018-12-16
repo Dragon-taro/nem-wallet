@@ -1,11 +1,11 @@
 import * as React from "react";
-import Wallet from "../components/Wallet";
+import Login from "../components/Login";
 
 class AppContainer extends React.Component {
   render() {
     return (
       <div>
-        <Wallet />
+        <Login />
       </div>
     );
   }

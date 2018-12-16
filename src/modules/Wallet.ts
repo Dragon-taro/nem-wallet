@@ -1,6 +1,6 @@
 import { map, mergeMap } from "rxjs/operators";
 import { ofType, Epic } from "redux-observable";
-import { SimpleWallet, Password, NetworkTypes, NEMLibrary } from "nem-library";
+import { SimpleWallet, Password } from "nem-library";
 import { Action } from "../types/Action";
 import { Wallet } from "../types/Wallet";
 
@@ -25,6 +25,7 @@ export const createWalletEpic: Epic<Action<Payload>, any, Wallet> = (
 ) =>
   action$.pipe(
     ofType(CREATE_WALLET),
+    // ここでwalletを作成
     map(() => setWallet())
   );
 
