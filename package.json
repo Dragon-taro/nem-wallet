@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/react": "^16.4.18",
+    "@types/react-dom": "^16.0.9",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^5.1.1",
@@ -27,6 +29,8 @@
     "babel-loader": "^8.0.4",
     "http-server": "^0.11.1",
     "webpack": "^4.25.1",
+    "awesome-typescript-loader": "^5.2.1",
+    "typescript": "^3.1.6",
     "webpack-cli": "^3.1.2"
   }
 }
