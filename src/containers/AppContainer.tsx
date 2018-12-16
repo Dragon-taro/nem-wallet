@@ -1,8 +1,13 @@
 import * as React from "react";
+import Wallet from "../components/Wallet";
 
 class AppContainer extends React.Component {
   render() {
-    return <div>app</div>;
+    return (
+      <div>
+        <Wallet />
+      </div>
+    );
   }
 }
 

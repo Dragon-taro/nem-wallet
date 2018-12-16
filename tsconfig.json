@@ -7,8 +7,9 @@
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "module": "commonjs",
-    "target": "es5",
+    "target": "es6",
     "jsx": "react"
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*"],
+  "lib": ["es2015", "es2015.iterable", "dom"]
 }

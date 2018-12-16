@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  entry: ["./src/index.tsx"],
+  entry: ["@babel/polyfill", "./src/index.tsx"],
   output: {
     path: path.join(__dirname, "static/js"),
     filename: "bundle.js"
@@ -11,6 +11,21 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js", ".json"]
   },
   module: {
-    rules: [{ test: /\.tsx?$/, loader: "awesome-typescript-loader" }]
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: {
+          loader: "awesome-typescript-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"]
+          }
+        }
+      }
+    ]
+  },
+  node: {
+    fs: "empty",
+    net: "empty",
+    tls: "empty"
   }
 };
