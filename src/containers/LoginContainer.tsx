@@ -2,9 +2,8 @@ import * as React from "react";
 import { Dispatch, bindActionCreators } from "redux";
 import Login from "../components/Login";
 import { connect } from "react-redux";
-import { rootEpic } from "../modules/root";
-import Wallet from "../components/Wallet";
-import { walletReducer, createWallet } from "../modules/Wallet";
+import { Wallet } from "../types/Wallet";
+import { createWallet } from "../modules/Wallet";
 import { Action } from "../types/Action";
 
 interface RootState {

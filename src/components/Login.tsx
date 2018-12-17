@@ -1,6 +1,14 @@
 import * as React from "react";
+import { Wallet } from "../types/Wallet";
+import { ICreateWallet } from "../modules/Wallet";
+import { Action } from "../types/Action";
 
-interface Props {}
+interface Props {
+  wallet: Wallet;
+  actions: {
+    createWallet: (payload: ICreateWallet) => Action<ICreateWallet>;
+  };
+}
 
 interface State {
   name: string;
@@ -16,6 +24,10 @@ class Login extends React.Component<Props, State> {
 
   handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     this.setState({ ...this.state, [e.target.name]: e.target.value });
+  }
+
+  handleCreate() {
+    this.props.actions.createWallet(this.state);
   }
 
   render() {
@@ -36,6 +48,7 @@ class Login extends React.Component<Props, State> {
             name="password"
             onChange={e => this.handleChange(e)}
           />
+          <button onClick={() => this.handleCreate()}>walletの作成</button>
         </div>
       </div>
     );

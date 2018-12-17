@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
 import { Wallet } from "../types/Wallet";
 
 // interface
-interface ICreateWallet {
+export interface ICreateWallet {
   name: string;
   password: string;
 }
