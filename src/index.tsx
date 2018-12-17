@@ -1,14 +1,29 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import AppContainer from "./containers/AppContainer";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import { createEpicMiddleware } from "redux-observable";
+import { rootReducer, rootEpic } from "./modules/root";
 import { NEMLibrary, NetworkTypes } from "nem-library";
+import AppContainer from "./containers/AppContainer";
 
 NEMLibrary.bootstrap(NetworkTypes.TEST_NET);
 
-class Root extends React.Component {
-  render() {
-    return <AppContainer />;
-  }
+const epicMiddleware = createEpicMiddleware();
+function configureStore() {
+  const store = createStore(rootReducer, applyMiddleware(epicMiddleware));
+
+  epicMiddleware.run(rootEpic);
+
+  return store;
 }
+
+const Root = () => {
+  return (
+    <Provider store={configureStore()}>
+      <AppContainer />
+    </Provider>
+  );
+};
 
 ReactDOM.render(<Root />, document.getElementById("root"));
