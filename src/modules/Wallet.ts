@@ -2,7 +2,6 @@ import { map, mergeMap } from "rxjs/operators";
 import { ofType, Epic } from "redux-observable";
 import { SimpleWallet, Password } from "nem-library";
 import { Action } from "../types/Action";
-import { Wallet } from "../types/Wallet";
 
 // interface
 interface Payload {
@@ -19,7 +18,7 @@ export const createWallet = () => ({ type: CREATE_WALLET });
 export const setWallet = () => ({ type: SET_WALLET });
 
 // epics
-export const createWalletEpic: Epic<Action<Payload>, any, Wallet> = (
+export const createWalletEpic: Epic<Action<Payload>, any, SimpleWallet> = (
   action$,
   state$
 ) =>
@@ -31,9 +30,9 @@ export const createWalletEpic: Epic<Action<Payload>, any, Wallet> = (
 
 // reducer
 export const weatherReducer = (
-  state: Wallet = {},
+  state: SimpleWallet | undefined,
   action: Action<Payload>
-): Wallet => {
+): SimpleWallet | undefined => {
   switch (action.type) {
     case SET_WALLET:
       return state;
