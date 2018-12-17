@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { createEpicMiddleware } from "redux-observable";
 import { rootReducer, rootEpic } from "./modules/root";
 import { NEMLibrary, NetworkTypes } from "nem-library";
-import AppContainer from "./containers/AppContainer";
+import LoginContainer from "./containers/LoginContainer";
 
 NEMLibrary.bootstrap(NetworkTypes.TEST_NET);
 
@@ -21,7 +21,7 @@ function configureStore() {
 const Root = () => {
   return (
     <Provider store={configureStore()}>
-      <AppContainer />
+      <LoginContainer />
     </Provider>
   );
 };
