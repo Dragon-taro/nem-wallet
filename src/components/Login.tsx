@@ -1,6 +1,5 @@
 import * as React from "react";
-import { Wallet } from "../types/Wallet";
-import { ICreateWallet } from "../modules/Wallet";
+import { Wallet, ICreateWallet } from "../types/Wallet";
 import { Action } from "../types/Action";
 
 interface Props {
@@ -32,6 +31,7 @@ class Login extends React.Component<Props, State> {
 
   render() {
     const { name, password }: State = this.state;
+
     return (
       <div>
         <h1>Walletの作成</h1>

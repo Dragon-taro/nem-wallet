@@ -4,23 +4,20 @@ import { SimpleWallet, Password } from "nem-library";
 import { Action } from "../types/Action";
 import { Observable } from "rxjs";
 import { Wallet } from "../types/Wallet";
-
-// interface
-export interface ICreateWallet {
-  name: string;
-  password: string;
-}
+import { ICreateWallet } from "../types/Wallet";
 
 // constants
 export const CREATE_WALLET = "CREATE_WALLET";
 export const SET_WALLET = "SET_WALLET";
 
 // actions
-export const createWallet = (payload: ICreateWallet) => ({
+export const createWallet = (
+  payload: ICreateWallet
+): Action<ICreateWallet> => ({
   type: CREATE_WALLET,
   payload
 });
-export const setWallet = (payload: Wallet) => ({
+export const setWallet = (payload: Wallet): Action<Wallet> => ({
   type: SET_WALLET,
   payload
 });
