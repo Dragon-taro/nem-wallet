@@ -40,7 +40,7 @@ const initialeState: Transfer = {
 };
 
 // reducer
-export const balanceReducer = (
+export const transferReducer = (
   state: Transfer = initialeState,
   action: Action<SignedTransaction> | Action<{}>
 ): Transfer => {
