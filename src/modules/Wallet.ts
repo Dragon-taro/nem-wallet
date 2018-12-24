@@ -44,8 +44,8 @@ const initialeState: Wallet = {
 // reducer
 export const walletReducer = (
   state: Wallet = initialeState,
-  action: Action<Wallet>
-): SimpleWallet | {} => {
+  action: Action<Wallet> | Action<ICreateWallet>
+): Wallet | {} => {
   switch (action.type) {
     case SET_WALLET:
       return { ...state, ...action.payload };

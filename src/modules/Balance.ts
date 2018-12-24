@@ -26,10 +26,6 @@ export const getBalanceEpic = (action$: Observable<Action<Address>>) =>
       const accountHttp = new AccountHttp();
       return accountHttp.getAssetsOwnedByAddress(action.payload as Address);
     }),
-    map(assets => {
-      console.log(assets);
-      return assets;
-    }),
     map((assets: Asset[]) => setBalance(assets))
   );
 

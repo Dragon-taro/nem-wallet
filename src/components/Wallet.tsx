@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Address, Asset, SimpleWallet } from "nem-library";
+import { Address, Asset } from "nem-library";
 import { Action } from "../types/Action";
 import { Wallet as IWallet } from "../types/Wallet";
 
