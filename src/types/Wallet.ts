@@ -1,4 +1,4 @@
-import { SimpleWallet } from "nem-library";
+import { SimpleWallet, Password } from "nem-library";
 
 export interface Wallet {
   wallet?: SimpleWallet;

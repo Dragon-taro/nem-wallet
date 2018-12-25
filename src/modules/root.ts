@@ -1,11 +1,12 @@
 import { combineEpics } from "redux-observable";
 import { combineReducers } from "redux";
-import { walletReducer, createWalletEpic } from "./Wallet";
+import { walletReducer, createWalletEpic, setLocalWalletEpic } from "./Wallet";
 import { getBalanceEpic, balanceReducer } from "./Balance";
 import { transferEpic, transferReducer } from "./Transfer";
 
 export const rootEpic = combineEpics(
   createWalletEpic,
+  setLocalWalletEpic,
   getBalanceEpic,
   transferEpic
 );
