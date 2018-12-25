@@ -15,6 +15,7 @@ import { Wallet as IWallet } from "../types/Wallet";
 interface Props {
   actions: {
     getBalance: (address: Address) => Action<Address>;
+    loadLocalWallet: () => Action<{}>;
     transfer: (signed: SignedTransaction) => Action<SignedTransaction>;
   };
   balance: Asset;
@@ -38,6 +39,8 @@ class Wallet extends React.Component<Props, State> {
     if (wallet) {
       const address = new Address(wallet.address.plain());
       this.props.actions.getBalance(address);
+    } else {
+      this.props.actions.loadLocalWallet();
     }
   }
 

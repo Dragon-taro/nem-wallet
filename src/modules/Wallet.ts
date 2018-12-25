@@ -10,7 +10,7 @@ import { ICreateWallet } from "../types/Wallet";
 export const CREATE_WALLET = "CREATE_WALLET";
 export const SET_WALLET = "SET_WALLET";
 export const SET_LOCAL_WALLET = "SET_LOCAL_WALLET";
-export const LOAD_WALLET = "LOAD_WALLET";
+export const LOAD_LOCAL_WALLET = "LOAD_LOCAL_WALLET";
 
 // actions
 export const createWallet = (
@@ -29,8 +29,8 @@ export const setLocalWallet = (
   type: SET_LOCAL_WALLET,
   payload
 });
-export const loadWallet = (): Action<{}> => ({
-  type: LOAD_WALLET
+export const loadLocalWallet = (): Action<{}> => ({
+  type: LOAD_LOCAL_WALLET
 });
 
 // epics
@@ -51,6 +51,18 @@ export const setLocalWalletEpic = (action$: Observable<Action<SimpleWallet>>) =>
       const walletFile = action.payload!.writeWLTFile();
       localStorage.setItem("wallet", walletFile);
       return action.payload;
+    }),
+    map(wallet => setWallet({ wallet, loading: false }))
+  );
+export const loadWalletEpic = (action$: Observable<Action<{}>>) =>
+  action$.pipe(
+    ofType(LOAD_LOCAL_WALLET),
+    map(() => {
+      console.log("wallet");
+
+      const walletFile = localStorage.getItem("wallet") || "";
+      const wallet = SimpleWallet.readFromWLT(walletFile);
+      return wallet;
     }),
     map(wallet => setWallet({ wallet, loading: false }))
   );
