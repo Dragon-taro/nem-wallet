@@ -35,13 +35,7 @@ class Wallet extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    const wallet = this.props.wallet.wallet;
-    if (wallet) {
-      const address = new Address(wallet.address.plain());
-      this.props.actions.getBalance(address);
-    } else {
-      this.props.actions.loadLocalWallet();
-    }
+    this.props.actions.loadLocalWallet();
   }
 
   transferTransaction() {
@@ -62,9 +56,13 @@ class Wallet extends React.Component<Props, State> {
     this.setState({ ...this.state, [e.target.name]: e.target.value });
   }
 
+  balanceList() {}
+
   render() {
     return (
       <div>
+        <h2>Balance</h2>
+        <ul />
         <h2>Transfer</h2>
         <input
           type="text"

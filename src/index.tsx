@@ -8,7 +8,7 @@ import { NEMLibrary, NetworkTypes } from "nem-library";
 import LoginContainer from "./containers/LoginContainer";
 import WalletContainer from "./containers/WalletContainer";
 
-NEMLibrary.bootstrap(NetworkTypes.TEST_NET);
+NEMLibrary.bootstrap(NetworkTypes.MAIN_NET);
 
 const epicMiddleware = createEpicMiddleware();
 function configureStore() {

@@ -5,6 +5,7 @@ import { Action } from "../types/Action";
 import { Observable } from "rxjs";
 import { Wallet } from "../types/Wallet";
 import { ICreateWallet } from "../types/Wallet";
+import { getBalance } from "./Balance";
 
 // constants
 export const CREATE_WALLET = "CREATE_WALLET";
@@ -58,13 +59,15 @@ export const loadWalletEpic = (action$: Observable<Action<{}>>) =>
   action$.pipe(
     ofType(LOAD_LOCAL_WALLET),
     map(() => {
-      console.log("wallet");
-
       const walletFile = localStorage.getItem("wallet") || "";
       const wallet = SimpleWallet.readFromWLT(walletFile);
       return wallet;
     }),
-    map(wallet => setWallet({ wallet, loading: false }))
+    map(wallet => {
+      setWallet({ wallet, loading: false });
+      return wallet;
+    }),
+    map(wallet => getBalance(wallet.address))
   );
 
 // initialeState
